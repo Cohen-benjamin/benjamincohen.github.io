@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin Cohen - Industrial Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #3498db;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .job, .education-item, .award-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .job:hover, .education-item:hover, .award-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            color: #2c3e50;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .company {
+            color: #e74c3c;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-weight: bold;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .location {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .job ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .job li::before {
+            content: '▶';
+            color: #3498db;
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .proficiency {
+            float: right;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .gpa {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .date {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Benjamin Cohen</h1>
+            <div class="subtitle">Industrial Engineer</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:Cohen.benjamin.daniel@gmail.com">Cohen.benjamin.daniel@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="tel:+14108687096">(410) 868-7096</a>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <a href="https://www.linkedin.com/in/benjamin-cohen-0566bb21a/" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>Work Experience</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Industrial Engineer</div>
+                            <div class="company">Raytheon Missile Defence</div>
+                            <div class="location">Andover, MA</div>
+                        </div>
+                        <div class="date">07/23 - Current</div>
+                    </div>
+                    <ul>
+                        <li>Created capacity models to identify bottlenecks in the manufacturing process, enabling leadership to make informed decisions on the methods to increase factory capacity.</li>
+                        <li>Designed new layouts of the factory in Autocad to enable cost savings through better flow of material and people, reducing non-value added labor and enabling thousands of dollars in cost savings.</li>
+                        <li>Developed new Industrial engineering team capability to load quality defect data into visio to create a heat map, which visualizes trends and helps the quality team identify trends and aids in the real time problem solving process.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Operations Engineer/Industrial Engineer</div>
+                            <div class="company">Spirit AeroSystems</div>
+                            <div class="location">Wichita, KS</div>
+                        </div>
+                        <div class="date">05/23 - 08/23</div>
+                    </div>
+                    <ul>
+                        <li>Presented summer wide project to CEO of the company and other leaders throughout the company at intern project expo, giving visibility my work done throughout the summer and improving my presentation skills.</li>
+                        <li>Developed a standardized routing system based on data analysis which eliminated redundancy, reduced flow times, and decreased planning time for the Manufacturing Engineers, reducing the number of routings for parts by 50%.</li>
+                        <li>Conceptualized electronic tools for Manufacturing Engineers to easily plan routings through an emergent manufacturing area based on the engineering designs from multiple manufacturers which reduced the learning curve for planning in this area.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Research Assistant</div>
+                            <div class="company">Purdue University Hat Lab</div>
+                            <div class="location">West Lafayette, IN</div>
+                        </div>
+                        <div class="date">10/23 - 07/24</div>
+                    </div>
+                    <ul>
+                        <li>Collaborated with a team of researchers to contribute to articles on various topics relating to fashion and sneaker culture.</li>
+                        <li>Assisted in managing photographers and coordinating logistics for a sneaker photo exhibition.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Counselor</div>
+                            <div class="company">Camp Airy</div>
+                            <div class="location">Thurmont, MD</div>
+                        </div>
+                        <div class="date">06/21 - 08/23</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">B.S. in Industrial Engineering</div>
+                            <div class="company">Purdue University</div>
+                            <div class="location">West Lafayette, IN</div>
+                            <div style="margin-top: 5px;">Certificate in Entrepreneurship and Innovation</div>
+                        </div>
+                        <div>
+                            <div class="date">May 2024</div>
+                            <div class="gpa">Overall GPA: 3.85</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Leadership & Volunteer Work</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Vice President</div>
+                            <div class="company">Alpha Epsilon Pi Fraternity</div>
+                            <div class="location">West Lafayette, IN</div>
+                        </div>
+                        <div class="date">09/20 - 05/24</div>
+                    </div>
+                    <ul>
+                        <li>Organized and led the house judicial board to mediate disputes and communicate personal issues between brothers.</li>
+                        <li>Created parents' weekend, corresponded with parents, and received over $3,000 in donations.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Volunteer</div>
+                            <div class="company">Arts Partners</div>
+                            <div class="location">Wichita, KS</div>
+                        </div>
+                        <div class="date">07/23 - 07/24</div>
+                    </div>
+                    <ul>
+                        <li>Designed a shipping container space for Arts Partners Wichita which will be used to pitch to doners.</li>
+                        <li>Transformed child's diorama design to a CAD drawing and pitch deck for the shipping container space.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Awards & Recognition</h2>
+                <div class="award-item">
+                    <strong>Alpha Phi Mu Membership</strong> (May 2023)<br>
+                    Membership only available to top 25% of Purdue Industrial Engineers.
+                </div>
+                <div class="award-item">
+                    <strong>A-Men Award</strong> (August 2021)<br>
+                    Awarded for grace under pressure, collegiality, and excellent counseling prowess.
+                </div>
+                <div class="award-item">
+                    <strong>Eagle Scout</strong> (December 2019)<br>
+                    Completed Eagle Scout Project, all merit badges, and all other previous ranks.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>CAD & Design</h3>
+                        <ul class="skill-list">
+                            <li>Inventor and AutoCAD <span class="proficiency">Proficient</span></li>
+                            <li>Arena Simulation Software <span class="proficiency">Expert</span></li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming</h3>
+                        <ul class="skill-list">
+                            <li>C Programming <span class="proficiency">Proficient</span></li>
+                            <li>R Programming <span class="proficiency">Expert</span></li>
+                            <li>PHP (with HTML & SQL) <span class="proficiency">Proficient</span></li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Data & Systems</h3>
+                        <ul class="skill-list">
+                            <li>SQL Databases <span class="proficiency">Proficient</span></li>
+                            <li>SAP (CA03, CR03, CS03, MM03) <span class="proficiency">Proficient</span></li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Office Suite</h3>
+                        <ul class="skill-list">
+                            <li>Google & Microsoft Suite <span class="proficiency">Expert</span></li>
+                            <li>Excel, Word, etc. <span class="proficiency">Expert</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
